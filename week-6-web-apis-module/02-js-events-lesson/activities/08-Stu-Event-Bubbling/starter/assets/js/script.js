@@ -1,5 +1,6 @@
 // TODO: Which element is the following line of code selecting?
 var carousel = document.querySelector(".carouselbox");
+
 // TODO: Which element is the following line of code selecting?
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
@@ -27,6 +28,7 @@ function navigate(direction) {
 }
 
 // TODO: Describe the functionality of the following event listener.
+//change the brownser
 carousel.addEventListener("click", function() {
   window.location.href = images[index];
 });

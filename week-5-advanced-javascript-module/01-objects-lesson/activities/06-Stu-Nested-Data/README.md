@@ -21,7 +21,7 @@ Implement the following user story:
 
 * Print the following to the console:
   
-  * The price of a drink
+  * The name of a drink
   * The price of two drinks
   * The milk and size options
 

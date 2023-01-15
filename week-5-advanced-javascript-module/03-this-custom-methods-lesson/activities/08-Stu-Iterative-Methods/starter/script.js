@@ -14,7 +14,8 @@ console.log(originalArray);
 var tripledArray = originalArray.map(function(data) {
   return data * 3
 });
-
+console.log(originalArray)
+console.log(tripledArray)
 // TODO: Describe how map is working in the example below. What will the value of oddOrEven be?
 var oddOrEven = originalArray.map(function(num) {
   if (num % 2 === 0) {
@@ -23,3 +24,4 @@ var oddOrEven = originalArray.map(function(num) {
     return 'odd'
   }
 });
+console.log(oddOrEven)
