@@ -17,6 +17,11 @@ function renderLastRegistered() {
   // If they are null, return early from this function
   // Else set the text of the userEmailSpan and userPasswordSpan 
   // to the corresponding values form local storage
+  let email = localStorage.getItem("email")
+  userEmailSpan.textContent = email;
+  let password = localStorage.getItem("password")
+  passwordInput = localStorage.getItem("password")
+
   
 }
 
@@ -33,6 +38,19 @@ signUpButton.addEventListener("click", function(event) {
   } else {
     displayMessage("success", "Registered successfully");
 
+    localStorage.setItem("email", email)
+
+    if (password === "") {
+      displayMessage("error", "Email cannot be blank");
+    } else if (password === "") {
+      displayMessage("error", "Password cannot be blank");
+    } else {
+      displayMessage("success", "Registered successfully");
+  
+
+    localStorage.setItem("password", password)
   // Save email and password to localStorage and render the last registered.
+
+  renderLastRegistered() 
   }
-});
+}

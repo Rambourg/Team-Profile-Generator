@@ -21,7 +21,7 @@ var account = {
     }
 };
 
-/*
+
 
 var johnAddress = {
     street: '123 First Ave',
