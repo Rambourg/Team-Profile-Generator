@@ -8,10 +8,14 @@ $.ajax({
 }).then(function(response) {
 
   // Create and save a reference to new empty table row
-  // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
-  // Append the td elements to the new table row
-  // Append the table row to the tbody element
-});
+  $("tbody").append(`<tr>
+  <td> ${response.Title}</td>
+  <td> 2012${response.Year}</td>
+  <td> Reza${response.Actor}</td>
+  </tr>`)
+  console.log(response)
+  )
+  ));
 
 // Repeat the above logic to add rows for two more movies of your choice
 

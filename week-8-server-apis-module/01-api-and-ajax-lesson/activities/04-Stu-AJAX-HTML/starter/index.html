@@ -1,39 +1,79 @@
 <!DOCTYPE html>
-<html lang="en-gb">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>Favorite Movies</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <title>Giphy API</title>
 </head>
 
+<div id="imageContainer">
+
+
+
+
+</div>
+
+<button id="prev">prev</button>
+
+
+<button id="next">next</button>
+
+
 <body>
-  <div class="container">
-    <h2>Basic Table</h2>
-    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
-    <table class="table">
-      <thead>
-        <tr>
-          <!-- The scope attribute specifies that this is a header for a column -->
-          <th scope="col">Movie Name</th>
-          <th scope="col">Year</th>
-          <th scope="col">Actors</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Interstellar</td>
-          <td>2014</td>
-          <td>Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow</td>
-        </tr>
-        <!-- Insert additional movie rows here -->
-      </tbody>
-    </table>
-  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./script.js">
-    
+  <script type="text/javascript">
+    // Example queryURL for Giphy API
+
+    let offset = 0;
+
+    render();
+
+    function render() {
+
+      document.querySelector("#imageContainer").innerHTML = "";
+      var queryURL = "https://api.giphy.com/v1/gifs/search?api_key= &q=cat&limit=25&rating=pg&offset=" + offset;
+
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (response) {
+        console.log(response);
+
+        for (let i = 0; i < response.data.length; i++) {
+          const currentImage = response.data[i];
+          
+          let img = document.createElement("img");
+  
+          img.src = currentImage.images["480w_still"].url
+          document.querySelector("#imageContainer").appendChild(img);
+          console.log(response);
+        }
+      });
+
+    }
+
+
+    document.querySelector("#next").addEventListener("click", function () {
+      offset+=25;
+
+      render();
+      
+      
+      
+    })
+    document.querySelector("#prev").addEventListener("click",function () {
+      if(offset >0)
+      {
+
+        offset-=25;
+        render();
+      }
+      
+
+    })
   </script>
+
 </body>
 
 </html>
