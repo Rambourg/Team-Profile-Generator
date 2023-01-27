@@ -1,12 +1,13 @@
 //date to make the user guide himself and create his tasks
 setInterval(
     function(){
-        $("#currentDay").text(moment().startOf("week "))
+        $("#currentDay").text(moment().format("DDD MMM, YYYY hh:mm:ss"))
     
     },1000)
 
+
       //tasks /hours to store in the local storage
-      const tasks = {"9":[],"10":[], "11":[], "12":[], "13":[], "14":[], "15":[], "16":[], "17":[]};
+      let tasks = {"9":[],"10":[], "11":[], "12":[], "13":[], "14":[], "15":[], "16":[], "17":[]};
 
       let setTasks = function() {
         //tasks will go to local storage
@@ -29,7 +30,7 @@ setInterval(
         }
     
         // make sure the past/current/future time is reflected
-        auditTasks()
+        // auditTasks()
     }
     
     var createTask = function(taskText, hourDiv) {
@@ -113,7 +114,8 @@ setInterval(
     })
     
     // update task backgrounds on the hour
-    timeToHour = 3600000 - today.milliseconds();  // check how much time is left until the next hour
+    let today = new Date();
+    let timeToHour = 3600000 - today.getMilliseconds();  // check how much time is left until the next hour
     setTimeout(function() {
         setInterval(auditTasks, 3600000)
     }, timeToHour);

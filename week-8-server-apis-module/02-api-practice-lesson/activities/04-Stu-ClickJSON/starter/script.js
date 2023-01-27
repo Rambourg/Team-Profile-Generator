@@ -1,4 +1,4 @@
-// Initial array of movies
+/// Initial array of movies
 var movies = ["The Matrix", "Dune", "Mr. Right", "The Lion King"];
 
 // Function for displaying movie data
@@ -26,7 +26,7 @@ function renderButtons() {
 }
 
 // This function handles events where one button is clicked
-$("#add-movie").on("click", function(event) {
+$("#add-movie").on("click", function (event) {
   event.preventDefault();
 
   // This line grabs the input from the textbox
@@ -40,5 +40,43 @@ $("#add-movie").on("click", function(event) {
 
 });
 
+function displayMovieInfo(movieString) {
+
+
+  var queryURL = "https://www.omdbapi.com/?t=" + movieString + "&apikey=trilogy";
+  fetch(queryURL)
+  .then( response => response.json())
+  .then(movie => {
+    
+       document.querySelector("#movie-view").textContent = JSON.stringify(movie);  
+  })
+
+}
+
+
+
+
+
 // Calling the renderButtons function to display the initial buttons
 renderButtons();
+
+let buttonsView = document.querySelector("#buttons-view")
+
+buttonsView.addEventListener("click", function (event) {
+
+  if(event.target.matches("button"))
+  {
+    let movie = event.target.textContent;
+    console.log(movie);
+    displayMovieInfo(movie)
+  }
+
+})
+
+
+
+
+
+
+
+

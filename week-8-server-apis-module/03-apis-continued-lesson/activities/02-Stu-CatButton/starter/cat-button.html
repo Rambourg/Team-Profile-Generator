@@ -6,38 +6,100 @@
   <title>The Magical Cat Button</title>
 </head>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Magical Cat Button</title>
+</head>
+
 <body>
   <button id="cat-button">magical cat button</button>
   <div id="images">
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    //
+    
+    //on click, fire this anonymous function
     $("#cat-button").on("click", function() {
 
-      //
-      var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats&rating=pg";
+      // the url of the random endpoint, we're telling it to return a random PG rated cat gif.
 
-      //
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
+      var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=<!DOCTYPE html>
+<html lang="en">
 
-      //
+<head>
+  <meta charset="utf-8">
+  <title>The Magical Cat Button</title>
+</head>
+
+<body>
+  <button id="cat-button">magical cat button</button>
+  <div id="images">
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    
+    //on click, fire this anonymous function
+    $("#cat-button").on("click", function() {
+
+      // the url of the random endpoint, we're telling it to return a random PG rated cat gif.
+
+      var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GGPTVtJ1Mj0YioZAEjBV3XNK13DENj54&tag=cats&rating=pg";
+
+      //make an https request fetch will return promise, which means it is thenable.
+      fetch(queryURL)
+
+      //will fire off when the server finally responds.  The response object will come back first but the body of the response
+      //will return as a stream.  The stream, once it arrives fully, will then be converted to a javascript object from a string.
+      // response.json() returns a promise, which means it is thenable.
+      .then(response => response.json())
+
+      //the javascript object has arrived successfully and we have access to the data.
         .then(function(response) {
 
-        //
+        //pulling out a url that is deeply nested in the object to display on the page.
         var imageUrl = response.data.images.original.url;
 
-          //
+          //create an image tag
           var catImage = $("<img>");
 
-          //
+          //set the contents of the image tag
           catImage.attr("src", imageUrl);
           catImage.attr("alt", "cat image");
 
-          //
+          //put the image tag into the images container.
+          $("#images").prepend(catImage);
+        });
+    });
+  </script>
+</body>
+
+</html>=cats&rating=pg";
+
+      //make an https request fetch will return promise, which means it is thenable.
+      fetch(queryURL)
+
+      //will fire off when the server finally responds.  The response object will come back first but the body of the response
+      //will return as a stream.  The stream, once it arrives fully, will then be converted to a javascript object from a string.
+      // response.json() returns a promise, which means it is thenable.
+      .then(response => response.json())
+
+      //the javascript object has arrived successfully and we have access to the data.
+        .then(function(response) {
+
+        //pulling out a url that is deeply nested in the object to display on the page.
+        var imageUrl = response.data.images.original.url;
+
+          //create an image tag
+          var catImage = $("<img>");
+
+          //set the contents of the image tag
+          catImage.attr("src", imageUrl);
+          catImage.attr("alt", "cat image");
+
+          //put the image tag into the images container.
           $("#images").prepend(catImage);
         });
     });

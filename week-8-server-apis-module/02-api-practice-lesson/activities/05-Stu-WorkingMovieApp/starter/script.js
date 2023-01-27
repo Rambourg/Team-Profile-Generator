@@ -14,6 +14,8 @@
    }).then(function(response) {
 
      // YOUR CODE GOES HERE!!!
+     //create a div, set this string to its innerHtml
+     <h1>${response.title}</h1>
 
    });
 
